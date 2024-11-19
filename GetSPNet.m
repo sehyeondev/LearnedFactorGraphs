@@ -1,4 +1,4 @@
-function net = GetSPNet(v_fXtrain, v_fYtrain ,s_nConst, s_nMemSize, NetParams)
+function [net, GMModel] = GetSPNet(v_fXtrain, v_fYtrain ,s_nConst, s_nMemSize, NetParams)
 
 % Generate and train a new SPNet network
 %
@@ -71,4 +71,7 @@ end
 
 % Train network with default learning rate
 net = TrainSPNet(m_fXtrain,v_fYtrain ,s_nConst, layers, NetParams);
- 
+
+% Compute output PDF using GMM fitting
+GMModel = fitgmdist(v_fYtrain',numClasses,'RegularizationValue',0.1);
+
