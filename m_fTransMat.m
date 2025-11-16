@@ -47,7 +47,3 @@ else
     % Normalize columns to unit
     m_fTransition = m_fTransition./sum(m_fTransition);
 end
-
-
-
-
